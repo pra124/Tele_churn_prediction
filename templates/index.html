@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- ✅ Modal CSS -->
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      text-align: center;
+      position: relative;
+    }
+    .close {
+      color: #1f678a;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- ✅ Modal JavaScript -->
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(m => { if (event.target === m) m.style.display = 'none'; });
+    };
+  </script>
+
+  <!-- ✅ Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ✅ Header -->
+  <header style="background-color:#1f678a; padding:20px 40px; color:white;">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div style="font-size:28px; font-weight:700;">Churn Prediction Dashboard</div>
+      <nav>
+        <a href="#" onclick="openModal('aboutMeModal')" style="color:white; text-decoration:none; margin-left:25px; font-size:18px;">About Me</a>
+        <a href="#" onclick="openModal('aboutModelModal')" style="color:white; text-decoration:none; margin-left:25px; font-size:18px;">About Model</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ✅ About Me Modal -->
+  <div id="aboutMeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('aboutMeModal')">&times;</span>
+      <h2>About Me</h2>
+      <p>Hi, I’m Pranavi Nidamanuri .
+        I developed this Churn Prediction Dashboard using machine learning models to identify customers likely to leave a telecom service.
+        contact me pranavinidamanuri@gmail.com</p>
+    </div>
+  </div>
+
+  <!-- ✅ About Model Modal -->
+  <div id="aboutModelModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('aboutModelModal')">&times;</span>
+      <h2>About Model</h2>
+      <p>This project predicts whether a telecom customer will churn or stay using machine learning.
+Several algorithms were tested, and Gradient Boosting gave the best accuracy.
+It handles both numerical and categorical data with proper encoding and scaling.
+The model is deployed using Flask, allowing real-time churn prediction through a web interface.</p>
+    </div>
+  </div>
+
+</body>
+</html>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f7f9;
+      color: #2c3e50;
+    }
+    header {
+      background-color: #1f678a;
+      padding: 20px 40px;
+      text-align: center;
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 30px;
+      gap: 25px;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      width: 220px;
+      text-align: center;
+      padding: 15px;
+    }
+    .card img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 5px;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #1f678a;
+    }
+    .card select,
+    .card input[type="number"] {
+      width: 80%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccd2d8;
+      font-size: 16px;
+      color: #2c3e50;
+      background-color: #f9fafb;
+    }
+    .predict-button {
+      display: block;
+      margin: 40px auto;
+      padding: 15px 50px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      background-color: #1f678a;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .predict-button:hover {
+      background-color: #155a7f;
+    }
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+      background-color: #ffffff;
+      margin: 10% auto;
+      padding: 40px;
+      border: 2px solid #1f678a;
+      width: 50%;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      border-radius: 12px;
+      color: #2c3e50;
+    }
+    .close {
+      color: #2c3e50;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #1f678a;
+    }
+    @media(max-width: 768px){
+      .card {
+        width: 45%;
+      }
+      .modal-content {
+        width: 80%;
+      }
+    }
+    @media(max-width: 480px){
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+
+<div class="container">
+  <!-- Gender -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/15/4f/78/154f78c84b02f7ee1900c0caa6c18ac4.jpg" alt="Gender">
+    <div class="card-title">Gender</div>
+    <select id="gender">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  </div>
+
+  <!-- Senior Citizen -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/68/ce/8d/68ce8d3aa84389bf20f228f49de12a55.jpg" alt="Senior Citizen">
+    <div class="card-title">Senior Citizen</div>
+    <select id="senior">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <!-- Partner -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/95/ec/40/95ec400c7c3fd6fd7d00e7e1117de155.jpg" alt="Partner">
+    <div class="card-title">Partner</div>
+    <select id="partner">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <!-- Dependents -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/52/a4/ea/52a4eab2b2525d2e2ac7c9de882a68f1.jpg" alt="Dependents">
+    <div class="card-title">Dependents</div>
+    <select id="dependents">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <!-- Phone Service -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/b5/12/fc/b512fc33a974f7ba12bfe6372f0243ec.jpg" alt="Phone Service">
+    <div class="card-title">Phone Service</div>
+    <select id="phoneservice">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <!-- Multiple Lines -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/3c/b7/af/3cb7afbb9cfd08c8df3cf5a14df07cae.jpg" alt="Multiple Lines">
+    <div class="card-title">Multiple Lines</div>
+    <select id="multiplelines">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+      <option value="No phone service">No phone service</option>
+    </select>
+  </div>
+
+  <!-- Internet Service -->
+  <div class="card">
+    <img src="https://i.pinimg.com/1200x/46/63/0e/46630e22923aa721d42d803a4e4e8087.jpg" alt="Internet Service">
+    <div class="card-title">Internet Service</div>
+    <select id="internetservice">
+      <option value="DSL">DSL</option>
+      <option value="Fiber optic">Fiber optic</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <!-- Online Security -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/ec/37/61/ec37612aaca171aaa3921811be44b1fe.jpg" alt="Online Security">
+    <div class="card-title">Online Security</div>
+    <select id="onlinesecurity">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+      <option value="No internet service">No internet service</option>
+    </select>
+  </div>
+
+  <!-- Online Backup -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/37/c4/ec/37c4ec17b15b9850d74a67e1ea7c93bb.jpg" alt="Online Backup">
+    <div class="card-title">Online Backup</div>
+    <select id="onlinebackup">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+      <option value="No internet service">No internet service</option>
+    </select>
+  </div>
+
+  <!-- Device Protection -->
+  <div class="card">
+    <img src="https://i.pinimg.com/1200x/27/67/e9/2767e95722cc6c06a7dffa57f54c7cdf.jpg" alt="Device Protection">
+    <div class="card-title">Device Protection</div>
+    <select id="deviceprotection">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+      <option value="No internet service">No internet service</option>
+    </select>
+  </div>
+
+  <!-- Tech Support -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/66/e1/17/66e11715e52a4e832c8757a657c4a002.jpg" alt="Tech Support">
+    <div class="card-title">Tech Support</div>
+    <select id="techsupport">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+      <option value="No internet service">No internet service</option>
+    </select>
+  </div>
+
+  <!-- Streaming TV -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/d3/b8/c0/d3b8c0f2e6b76ddab0389836f918f628.jpg" alt="Streaming TV">
+    <div class="card-title">Streaming TV</div>
+    <select id="streamingtv">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+      <option value="No internet service">No internet service</option>
+    </select>
+  </div>
+
+  <!-- Streaming Movies -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/99/65/57/9965570b83e359180cdd10e699abd0b5.jpg" alt="Streaming Movies">
+    <div class="card-title">Streaming Movies</div>
+    <select id="streamingmovies">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+      <option value="No internet service">No internet service</option>
+    </select>
+  </div>
+
+  <!-- Contract -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/4f/aa/0a/4faa0a7aed4fdb8c83bb6ee6a0a63d6b.jpg" alt="Contract">
+    <div class="card-title">Contract</div>
+    <select id="contract">
+      <option value="Month-to-month">Month-to-month</option>
+      <option value="One year">One year</option>
+      <option value="Two year">Two year</option>
+    </select>
+  </div>
+
+  <!-- Paperless Billing -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/01/6c/09/016c0981c120618ecc0f9ec149d56066.jpg" alt="Paperless Billing">
+    <div class="card-title">Paperless Billing</div>
+    <select id="paperlessbilling">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <!-- Payment Method -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/a4/8c/b8/a48cb8f5179127c3f71b814fe1ad69ca.jpg" alt="Payment Method">
+    <div class="card-title">Payment Method</div>
+    <select id="paymentmethod">
+      <option value="Electronic check">Electronic check</option>
+      <option value="Mailed check">Mailed check</option>
+      <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+      <option value="Credit card (automatic)">Credit card (automatic)</option>
+    </select>
+  </div>
+
+  <!-- SIM -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/ed/af/e5/edafe5a31a7911bc95f36099345f75e5.jpg" alt="SIM">
+    <div class="card-title">SIM</div>
+    <select id="sim">
+      <option value="Jio">Jio</option>
+      <option value="Airtel">Airtel</option>
+      <option value="Vi">Vi</option>
+      <option value="BSNL">BSNL</option>
+    </select>
+  </div>
+
+  <!-- Monthly Charges -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/75/f6/c1/75f6c1871cd57423f25df55f194c8a83.jpg" alt="Monthly Charges">
+    <div class="card-title">Monthly Charges</div>
+    <input type="number" id="monthlycharges" placeholder="Enter value">
+  </div>
+
+  <!-- Total Charges -->
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/ea/24/09/ea2409c16116a15c1c484872a7e18578.jpg" alt="Total Charges">
+    <div class="card-title">Total Charges</div>
+    <input type="number" id="totalcharges" placeholder="Enter value">
+  </div>
+
+</div>
+
+<button class="predict-button" onclick="showPrediction()">Predict</button>
+
+<!-- Modal for prediction -->
+<div id="predictionModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <p id="predictionText">Your Prediction Will Appear Here!</p>
+  </div>
+</div>
+
+<script>
+  function showPrediction() {
+    const data = {
+      gender: document.getElementById("gender").value,
+      senior: document.getElementById("senior").value,
+      partner: document.getElementById("partner").value,
+      dependents: document.getElementById("dependents").value,
+      phoneservice: document.getElementById("phoneservice").value,
+      multiplelines: document.getElementById("multiplelines").value,
+      internetservice: document.getElementById("internetservice").value,
+      onlinesecurity: document.getElementById("onlinesecurity").value,
+      onlinebackup: document.getElementById("onlinebackup").value,
+      deviceprotection: document.getElementById("deviceprotection").value,
+      techsupport: document.getElementById("techsupport").value,
+      streamingtv: document.getElementById("streamingtv").value,
+      streamingmovies: document.getElementById("streamingmovies").value,
+      contract: document.getElementById("contract").value,
+      paperlessbilling: document.getElementById("paperlessbilling").value,
+      paymentmethod: document.getElementById("paymentmethod").value,
+      sim: document.getElementById("sim").value,
+      monthlycharges: document.getElementById("monthlycharges").value,
+      totalcharges: document.getElementById("totalcharges").value
+    };
+
+    console.log("User Data:", data);
+
+    // Placeholder prediction
+    const predictionResult = "Prediction Result: Customer will churn";
+    document.getElementById("predictionText").innerText = predictionResult;
+    document.getElementById("predictionModal").style.display = "block";
+  }
+
+  function closePredictionModal() {
+  document.getElementById("predictionModal").style.display = "none";
+}
+
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("predictionModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+<!-- About Me Section -->
+<!-- About Me Modal -->
+<div id="aboutMeModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePredictionModal()">&times;</span>
+    <h2>About Me</h2>
+    <p><strong>Name:</strong> N. Pranavi</p>
+    <p><strong>Organization:</strong> Vihara Tech</p>
+    <p><strong>Email:</strong> <a href="mailto:yourmail@gmail.com">yourmail@gmail.com</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/your-linkedin/" target="_blank">linkedin.com/in/your-linkedin</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/yourgithub" target="_blank">github.com/yourgithub</a></p>
+  </div>
+</div>
+
+<!-- About Model Modal -->
+<div id="aboutModelModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('aboutModelModal')">&times;</span>
+    <h2>About the Model</h2>
+    <p>The Churn Prediction System uses <strong>Gradient Boosting</strong>, an ensemble technique combining multiple decision trees to form a strong predictive model.</p>
+    <ul>
+      <li>Training Accuracy – 85.5%</li>
+      <li>Testing Accuracy – 80.5%</li>
+    </ul>
+    <p>It reduces overfitting and handles both categorical + numerical data effectively for telecom churn prediction.</p>
+  </div>
+</div>
+
+</html>
