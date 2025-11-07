@@ -1,0 +1,75 @@
+/* Background image and layout */
+body {
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Glass effect container */
+.container {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.3);
+    padding: 40px;
+    width: 400px;
+    color: #fff;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    color: #fff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+select, input {
+    margin-top: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    outline: none;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #2d89ef;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #1b66c9;
+    transform: scale(1.02);
+}
+
+/* Scroll fix for smaller screens */
+@media (max-height: 700px) {
+    body {
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+}
