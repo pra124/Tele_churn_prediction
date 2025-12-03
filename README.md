@@ -52,3 +52,5 @@ A Flask-based web application was developed to deploy the model, allowing users 
 5. Final Selection Justification
 
 Gradient Boosting was finalized as the best model because it effectively balanced accuracy and generalization. It handled both linear and non-linear relationships in the dataset, minimized overfitting through regularization, and achieved the highest test accuracy among all models tested.
+
+https://tele-churn-prediction-2.onrender.com/
